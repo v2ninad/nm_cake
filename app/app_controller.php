@@ -27,14 +27,20 @@ class AppController extends Controller
 	@var RoleHelper */ var $Role;
 	/*@var RoleHelper */ var $html;
 
+	/**
+	* These actions have no Auth or Session attached to them...
+	*/
+	var $public_actions = array();
+
 	function beforeFilter()
 	{
 		if(!in_array($this->action , $this->public_actions ))
 		{
-			$this->Session->activate('/');
+			$this->Session->start();
 			Configure::write('Session.start', true); // Necessary for getting SessionHelper to work!
 		}
-
+		//echo "<pre>";print_r($this->Session);
+		//die;
 	}
 
 	function _log_access(){

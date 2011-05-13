@@ -1,0 +1,278 @@
+.adminpagetitle	/* Header of every page. It should be bold and stylish but descent */
+	{
+	font-size:larger;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:bold;
+	color:#FF6600;
+	text-align:center;
+	text-decoration:underline;
+	}
+
+.pagetitle	/* Header of every page. It should be bold and stylish but descent */
+	{
+	font-size:larger;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:bold;
+	color:#E00176;
+	text-align:center;
+	text-decoration:underline;
+	}
+	
+.messagetext	/* Generally dont touch untill u have some very specific idea or not matching colors! */
+	{
+	font-family:"Courier New", Courier, mono; 
+	font-size:12px;
+	color:#FF0000;
+	font-weight:bold;
+	}
+	
+.pagetext	/* Applied to text in paragraphs. This will represent most of the website. */
+	{
+	text-align:justify;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:12px;
+	color:#4F4F4F;
+	}
+.white {color: #FFFFFF}	
+.bold
+	{
+	font-weight:bold;
+	}
+
+.pagetext a:link{color:#666666} /* Should be brightly identified in page text */
+.pagetext a:hover{color:#000000} /* Should be brightly identified in page text */
+.pagetext a:visited{color:#666666} /* Should be brightly identified in page text */
+
+.Bold	/* Applied to text in paragraphs. This will represent most of the website. */
+	{
+	font-weight:bold;
+	}
+
+.tabletext		/* Applied to contents in table in middle of page. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	padding:'0' '0' '0' '0';
+	border-style:solid;
+	border-color:#C0C0C0;
+	border-width:2px;
+	}
+.tabletext th /* Required to specifically format TH. */
+	{
+	background-color:#EAEAEA;
+	border-style:solid;
+	border-width:1px;
+	border-color: #C0C0C0;
+	}
+.tabletext td /* Required to specifically format TH. */
+	{
+	border-style:solid;
+	border-width:1px;
+	border-color: #C0C0C0;
+	}
+
+.adminMainPanelText /* Applied to contents in left/right panel */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	border-style:solid;
+	border-width:1px;
+	border-color:#999999	}
+.adminMainPanelText th /* Required for TH */
+	{
+	background-color:#EAEAEA;
+	font-size:10px
+	font-weight:bold;
+	}
+.adminMainPanelText a:link{color:#000000; text-decoration:none} /* Required for links should be with prominent colors */
+.adminMainPanelText a:visited{color:#000000;text-decoration:none} /* Required for links should be with prominent colors */
+.adminMainPanelText a:hover{color:#666666; text-decoration:underline} /* Required for links should be with prominent colors */
+
+
+
+.adminPanelText /* Applied to contents in left/right panel */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	border-style:solid;
+	border-width:0px;
+	border-color:#999999	}
+.adminPanelText th /* Required for TH */
+	{
+	background-color:#EAEAEA;
+	font-size:10px
+	font-weight:bold;
+	}
+.adminPanelText a:link{color:#000000; text-decoration:none} /* Required for links should be with prominent colors */
+.adminPanelText a:visited{color:#000000;text-decoration:none} /* Required for links should be with prominent colors */
+.adminPanelText a:hover{color:#666666; text-decoration:underline} /* Required for links should be with prominent colors */
+
+
+.AdminSubMenuPaneltext /* Applied to contents in left/right panel */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#000000;
+	border-style:solid;
+	border-width:0px;
+	}
+.AdminSubMenuPaneltext a:link{color:#000000; text-decoration:none} /* Required for links should be with prominent colors */
+.AdminSubMenuPaneltext a:visited{color:#000000;text-decoration:none} /* Required for links should be with prominent colors */
+.AdminSubMenuPaneltext a:hover{color:#666666; text-decoration:underline} /* Required for links should be with prominent colors */
+
+
+
+.distMainPanelText /* Applied to contents in left/right panel */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	border-style:solid;
+	border-width:0px;
+	}
+.distMainPanelText th /* Required for TH */
+	{
+	background-color:#EAEAEA;
+	font-weight:bold;
+	}
+.distMainPanelText a:link{color:#000000; text-decoration:none} /* Required for links should be with prominent colors */
+.distMainPanelText a:visited{color:#000000;text-decoration:none} /* Required for links should be with prominent colors */
+.distMainPanelText a:hover{color:#666666; text-decoration:underline} /* Required for links should be with prominent colors */
+
+
+	
+.paneltext /* Applied to contents in left/right panel */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+	border-style:solid;
+	border-color:#FF8040;
+	border-width:1px;
+	}
+.paneltext th /* Required for TH */
+	{
+	background-color:#EAEAEA;
+	font-weight:bold;
+	}
+.paneltext a:link{color:#000000} /* Required for links should be with prominent colors */
+.paneltext a:visited{color:#000000} /* Required for links should be with prominent colors */
+.paneltext a:hover{color:#666666} /* Required for links should be with prominent colors */
+	
+.footertext /* Dont change at all */
+	{
+	font-family:"Courier New", Courier, mono; 
+	font-size:12px;
+	}
+	
+.tickertext /* Dont change at all */
+	{
+	font-family:Tahoma;
+	font-size:10px;
+	}
+
+.copyrighttext /* Dont change at all */
+	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#FF0000; 
+	}
+
+.achtext		/* Applied to contents in achievers. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	border-style:groove;
+	}
+.achtext th /* Required to specifically format TH. */
+	{
+	background-color:#FF6600;
+	}
+.achtext td /* Required to specifically format TH. */
+	{
+	border-style:solid;
+	border-color:#FFCC00;
+	border-width:1px;
+	}
+	
+.shadeform
+	{ 
+	FONT: 12px arial, verdana, sans-serif;
+	background-image:url(../images/shadeform.jpg);
+	text-align: left;
+	BORDER: #000000 1px solid;
+	}
+
+.but
+	{ 
+	FONT: 12px arial, verdana, sans-serif;
+	background-image:url(../images/shadeform.jpg);
+	}
+
+.formtext		/* Applied to contents in table in middle of page. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+	border-style:solid;
+	border-color:#FF3300;
+	border-width:1px;
+	}
+.formtext th /* Required to specifically format TH. */
+	{
+	background-color:#FFCC00;
+	height:20px;
+	}
+.formtext td /* Required to specifically format TH. */
+	{
+	border-width:0px;
+	}
+.formtext input /* Required to specifically format TH. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+	border-width:1px;
+	background-color:#CCCC66;
+	}
+.formtext textarea /* Required to specifically format TH. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+	border-width:1px;
+	background-color:#CCCC66;
+	}
+.formtext select /* Required to specifically format TH. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+	border-width:1px;
+	background-color:#CCCC66;
+	}
+.tabletextSimple		/* Applied to contents in table in middle of page. */
+	{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	padding:'0' '0' '0' '0';
+	border-style:none;
+	border-width:0px;
+	}
+.tabletextSimple th /* Required to specifically format TH. */
+	{
+	border-style:none;
+	border-width:0px;
+	background-color:#DFDFDF;
+	}
+
+.Title {
+	font-size: large;
+	font-weight: bold;
+	color: #999999;
+}	

@@ -19,7 +19,6 @@
         <tr>
 			<td width="640" valign="top">
 				<? $this->element('messages') ?>
-				<!-- <div align=center class=messagetext> --><?//echo $message;?><!--</div> -->
 				<?= $content_for_layout ?>
 			</td>
             <td width="140" valign="top">

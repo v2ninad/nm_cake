@@ -1,7 +1,6 @@
 <?php
 
-	//	Auto-print all session messages
-	$messages = $session->read('Message');
+	$messages = $this->Session->read('a');
 	if (!empty($messages)) {
 		foreach ($messages as $message_key=>$message) {
 			if ( isset ($message['message'])) {

@@ -1,0 +1,189 @@
+BODY {		FONT: 11px arial, verdana, sans-serif;
+		scrollbar-base-color: #909099;
+		scrollbar-track-color: #909099;
+		scrollbar-face-color: #909099;
+		scrollbar-highlight-color: #FFFFFF;
+		scrollbar-3dlight-color: #4E172A;
+		scrollbar-darkshadow-color: #4E172A;
+		scrollbar-shadow-color: #FFFFFF;
+		scrollbar-arrow-color: #FFFFFF; }
+
+
+a:link		{ color: #4E172A; text-decoration: none }
+
+a:visited	{ color: #4E172A; text-decoration: none }
+
+a:active	{ color: #666666; text-decoration: none }
+
+a:hover		{ color: #999999; text-decoration: none }
+
+
+
+
+ /* THIS LINE CONTROLS THE FONT SIZE ON ALL PAGES */
+TABLE		{ COLOR: #444444; FONT: 11px geneva, verdana, arial, sans-serif }
+
+.title		{ COLOR: #4E172A; FONT: 20px verdana, arial, sans-serif; font-weight: bold }
+
+.biglink 	{ FONT: 12px verdana, arial, sans-serif; font-weight: bold; font-style: italic; TEXT-DECORATION: none }
+
+.biglink:hover 	{ FONT: 12px verdana, arial, sans-serif; font-weight: bold; font-style: italic; TEXT-DECORATION: underline }
+
+.just 		{text-align: justify;}
+
+.copyright	{ COLOR: #666666; FONT: 9px geneva, verdana, arial, sans-serif }
+
+.smalltitle 	{ COLOR: #000000; FONT: 11px verdana, arial, sans-serif; font-weight: bold }
+
+.careertitle	{ COLOR: #666666; FONT: 14px geneva, verdana, arial, sans-serif; font-weight: bold }
+
+.subtitle	{ COLOR: #663333; FONT: 12px geneva, verdana, arial, sans-serif; font-weight: bold; letter-spacing: 0px }
+
+.phonetitle	{ COLOR: #000000; FONT: 12px geneva, verdana, arial, sans-serif; font-weight: bold }
+
+.picturecomments{ COLOR: #666666; FONT: 10px geneva, verdana, arial, sans-serif }
+
+.picturetitle 	{ COLOR: #000000; FONT: 10px verdana, arial, sans-serif; font-weight: bold }
+
+.list 		{ COLOR: #000000; FONT: 12px geneva, verdana, arial, sans-serif; font-weight: normal }
+
+
+
+.button-popups {background-color:#FFFFFF;
+		FONT-FAMILY: arial, verdana, helvetica, sans;
+		color: #000000;
+		font-size: 8pt;
+		cursor:hand;
+		font-weight: bold;
+		BORDER: #000000 1px solid }
+
+.buttonon-popups {background-color:#B2B2B8;
+		FONT-FAMILY: arial, verdana, helvetica, sans;
+		color: #FFFFFF;
+		font-size: 8pt;
+		cursor:hand;
+		font-weight: bold;
+		BORDER: #000000 1px solid }
+
+.shadeform	{ FONT: 13px arial, verdana, sans-serif;
+		background-image: url(images/shadeform.jpg);
+		text-align: left;
+		WIDTH: 180PX;
+		BORDER: #000000 1px solid}
+
+
+.dropdown {	COLOR: #333333;
+		WIDTH: 180PX;
+		FONT: 11px geneva, verdana, arial, sans-serif}
+
+
+.textarea	{ FONT: 13px arial, verdana, sans-serif;
+		background-image: url(images/shadeform.jpg);
+		text-align: left;
+		WIDTH: 250PX;
+		BORDER: #000000 1px solid}
+
+.submitbutton { FONT: 9pt verdana, arial,  sans-serif;
+		font-weight: bold;
+		color: #000000;
+		BORDER: #000000 1px solid;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		background-color:#FFFFFF; }
+
+.submitbuttonon { FONT: 9pt verdana, arial,  sans-serif;
+		font-weight: bold;
+		color: #FFFFFF;
+		BORDER: #000000 1px solid;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		background-color:#854058; }
+
+
+.searchform { 	WIDTH: 110PX;
+		HEIGHT: 20PX;
+		FONT: 11px arial, georgia, "Times New Roman", sans-serif;
+		BORDER-BOTTOM: #000000 1px solid;
+		BORDER-LEFT: #000000 1px solid;
+		BORDER-RIGHT: #000000 1px solid;
+		BORDER-TOP: #000000 1px solid }
+
+
+
+.searchdrop { WIDTH: 60PX; HEIGHT: 20PX; FONT: 11px arial, georgia, "Times New Roman", sans-serif }
+
+
+.searchbutton {	background-color:#F0F0F0;
+		FONT-FAMILY: arial, verdana, helvetica, sans;
+		color: #000000;
+		font-size: 8pt;
+		height: 18px;
+		width: 40px;
+		cursor:hand;
+		font-weight: bold;
+		text-align: center;
+		BORDER: #000000 1px solid }
+
+.divstyle {	position:absolute;
+		border: #000000 1px solid;
+		width:90;
+		top:0;
+		left:0 }
+
+.pstyletitle{	postion:absolute;
+		background:white;
+		color:black;
+		font-size:10px;
+		font-family:verdana, arial }
+
+
+.pstylebody {	postion:absolute;
+		background:white;
+		color:black;
+		font-size:10px;
+		font-family:verdana, arial }
+
+
+ /* START THE CODE FOR THE MENUS */
+
+
+#menulocation { LEFT: 0px; WIDTH: 154px; POSITION: absolute; TOP: 165px; padding:0px 0px; white-space:nowrap; }
+
+
+.menu		{ font-family: verdana, arial, helvetica, sans;
+		  font-size: 8pt;
+		  height: 28px;
+		  width: 154px;
+		  cursor:hand;
+		  font-weight: bold;
+		  text-indent: 12px;
+		  line-height: 20pt;
+		  text-align: left;
+		  display: block;
+		  border: #FFFFFF 0px solid; }
+
+
+
+a.menu:link 	{ background-image: url(images/button.gif);
+		  background-color:#B2B2B8;
+		  text-decoration: none;
+		  color: #F0F0F0; }
+
+
+a.menu:visited 	{ background-image: url(images/button.gif);
+		  background-color:#B2B2B8;
+		  text-decoration: none;
+		  color: #F0F0F0; }
+
+
+a.menu:active 	{  background-image: url(images/buttonon.gif);
+		   background-color:#B2B2B8;
+		   text-decoration: none;
+		   color: #FFFFFF; }
+
+
+a.menu:hover 	{ background-image: url(images/buttonon.gif);
+		  background-color:#B2B2B8;
+		  text-decoration: none;
+		  color: #FFFFFF; }
+

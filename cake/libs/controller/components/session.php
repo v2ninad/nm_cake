@@ -181,4 +181,9 @@ class SessionComponent extends Component {
 		return CakeSession::started();
 	}
 
+	
+	public function start() {
+		return CakeSession::start();
+	}
+
 }

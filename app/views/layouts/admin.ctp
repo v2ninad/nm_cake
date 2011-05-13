@@ -3,9 +3,9 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<?php echo $this->element('website_optimizer_control_script'); ?>
+	<?php //echo $this->element('website_optimizer_control_script'); ?>
 
-	<link href="../javascript/index.css" rel="stylesheet" type="text/css">
+	<link href="/css/index.css" rel="stylesheet" type="text/css">
 	<? if ((Configure::read('debug') > 0) && isset($firecake))  $firecake->view($this); ?>
 	<title><?=$companyname?></title>
 	<meta name="description" content="" />
@@ -19,17 +19,16 @@
 	<table width="780" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 			<td colspan="2">
-				<?php echo $this->element('pages/adminheader'); ?>
+				<?php echo $this->element('admin/header'); ?>
 			</td>
 		</tr>
         <tr>
 			<td width="640" valign="top">
 				<? $this->element('elements/messages') ?>
-				<!-- <div align=center class=messagetext><?=$message?></div> -->
 				<?= $content_for_layout ?>
 			</td>
             <td width="140" valign="top">
-				<?php echo $this->element('pages/rightpanel'); ?>
+				<?php echo $this->element('admin/rightpanel'); ?>
             </td>
         </tr>
         <tr>

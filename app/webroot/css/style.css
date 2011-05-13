@@ -1,0 +1,76 @@
+.topbg {
+	background-attachment: fixed;
+	background-image: url(images/topbg.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.leftboder {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #CCCCCC;
+}
+.bodytext {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #525b62;
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: justify;
+}
+.bottomdotline {
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCCCCC;
+	font-family: Verdana;
+	font-size: 11px;
+	color: #525b62;
+	height: 29px;
+}
+.bottommenu {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #525b62;
+	text-decoration: none;
+	text-align: center;
+}
+.bottommenu:hover {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #fe4d07;
+	text-decoration: underline;
+	text-align: center;
+}
+.copyright {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #CCCCCC;
+	text-align: right;
+	padding-right: 10px;
+	padding-bottom: 8px;
+}
+.news {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #FEAE00;
+	text-decoration: none;
+	text-align: left;
+}
+.news:hover {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #FEAE00;
+	text-decoration: none;
+	text-align: left;
+	height: 23px;
+}
+.news2 {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #777575;
+	text-decoration: none;
+	text-align: left;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #555555;
+	padding-bottom: 5px;
+}

@@ -666,7 +666,8 @@ class Set {
 				$key = intval($key);
 			}
 			if ($i === count($path) - 1) {
-				$_list[$key] = $data;
+				if(!is_array($data))
+					$_list[$key] = $data;
 			} else {
 				if (!isset($_list[$key])) {
 					$_list[$key] = array();
