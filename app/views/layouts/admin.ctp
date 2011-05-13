@@ -33,14 +33,14 @@
         </tr>
         <tr>
             <td colspan=2><br>
-				<?php echo $this->element('pages/footer'); ?>
+				<?php echo $this->element('admin/footer'); ?>
 			</td>
         </tr>
     </table>
 	</div>
 
-<?php echo $cakeDebug; ?>
-<?php echo $this->element('analytics'); ?>
-<?php echo $this->element('yield_tracking'); ?>
+<?php //echo $cakeDebug; ?>
+<?php //echo $this->element('analytics'); ?>
+<?php //echo $this->element('yield_tracking'); ?>
 </body>
 </html>

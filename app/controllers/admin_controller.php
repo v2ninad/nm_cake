@@ -13,6 +13,7 @@ class AdminController extends AppController {
 	/*@var SessionComponent */ var $Session;
 
 	function login() {
+		//if (isset($this->)))
 		//$this->layout = 'default';
 		
 	}
