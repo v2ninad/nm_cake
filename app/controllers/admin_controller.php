@@ -8,7 +8,7 @@ class AdminController extends AppController {
 //			'fields' => array('username' => 'email', 'password' => 'password'),
 //		),
 //	);
-	var $uses = array('User','Setup','Member');
+	var $uses = array('User','Setup','Member','Package');
 	var $layout = 'admin';
 	/*@var SessionComponent */ var $Session;
 
@@ -185,7 +185,10 @@ class AdminController extends AppController {
 
 		$conditions = array('Member.id'=>$id);
 		$data = $this->Member->find('all',array('conditions'=>$conditions));
+
+		$packages = $this->Package->query('Select * from packages');
 		$this->set('data', $data[0]);
+		$this->set('packages',$packages);
 	}
 
 	function logout() {

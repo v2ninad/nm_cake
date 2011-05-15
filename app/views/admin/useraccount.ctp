@@ -1,6 +1,7 @@
 <?
 	$member = $data['Member'];
-	$package = $data['Package'];
+	$package = $data['package'];
+	//$packages;
 
 ?>
 				<br>
@@ -54,7 +55,7 @@
                         <tr class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">Challan Details </font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="challandetails" type="text" class="shadeform" id="challandetails" value="<?=$member["mm_challandetails"]?>">
+                                    <input name="challandetails" type="text" class="shadeform" id="challandetails" value="<?=$member["challandetails"]?>">
                             </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
@@ -63,25 +64,17 @@
                                     <input name="billdetails" type="text" class="shadeform" id="billdetails" value="<?=$member["billdetails"]?>">
                             </span></font></div></td>
                         </tr>
-						<?php
-							$str = "select pm_price from packagemaster where pm_code =".mysql_result($rssetup,0,"mm_product");
-							$rsProduct = mysql_query($str);
-
-							$str = "select * from packagemaster where pm_price >=".mysql_result($rsProduct,0,0);
-							$rsprice = mysql_query($str);
-
-						 ?>
                         <tr class="pagetext">
                           <td>Product</td>
                           <td><label>
                             <select name="product" id="product">
 							<?php
-								for($i=0; $i < mysql_num_rows($rsprice); $i++)
+								for($i=0; $i <= count($packages); $i++)
 								{
-									if(mysql_result($rssetup,0,"mm_product") == mysql_result($rsprice,$i,"pm_code"))
-										echo "<option value='".mysql_result($rsprice,$i,"pm_code")."' selected='selected'>".mysql_result($rsprice,$i,"pm_name")."</option>";
+									if($package["code"] == $packages[$i]['packages']['code'])
+										echo "<option value='".$packages[$i]['packages']["code"]."' selected='selected'>".$packages[$i]['packages']["name"]."</option>";
 									else
-										echo "<option value='".mysql_result($rsprice,$i,"pm_code")."'>".mysql_result($rsprice,$i,"pm_name")."</option>";
+										echo "<option value='".$packages[$i]['packages']["code"]."'>".$packages[$i]['packages']["name"]."</option>";
 								}
 							?>
 
