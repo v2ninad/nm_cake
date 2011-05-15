@@ -352,7 +352,7 @@ class CakeRoute {
 			}
 			//custom by Ninad for pagination in search
 			//$params['pass'] = $params['pass'] . '/' . implode('/', $named);
-			//$params['pass'] = implode('/', $named) . '/' . $params['pass'];
+			$params['pass'] = implode('/', $named) . '/' . $params['pass'];
 		}
 		$out = $this->template;
 		$search = $replace = array();
