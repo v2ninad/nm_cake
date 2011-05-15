@@ -34,13 +34,41 @@ class AppController extends Controller
 
 	function beforeFilter()
 	{
-		if(!in_array($this->action , $this->public_actions ))
+		//$ses_id = $this->params['get']['session_id'];
+		if(!empty($_REQUEST['session_id'])) {
+			$this->Session->id($_REQUEST['session_id']);
+		}
+		// Or failover to cookie
+		else
 		{
-			$this->Session->start();
-			Configure::write('Session.start', true); // Necessary for getting SessionHelper to work!
+			$this->Session->id($this->Cookie->read('CAKEPHP'));
+		}
+		$this->Session->start();
+
+		$this->testModel();
+		//Security::setHash('md5');
+		Configure::write('Session.start', true); // Necessary for getting SessionHelper to work!
+		if(!in_array($this->action , $this->public_actions )) {
+			
 		}
 		//echo "<pre>";print_r($this->Session);
 		//die;
+		//default values.
+		if (empty($_SESSION['companyname'])) {
+			$this->loadModel('Setup');
+			$this->Session->write('companyname',$this->Setup->getValue('companyname'));
+			$this->Session->write('companyaddress',$this->Setup->getValue('companyaddress'));
+			$this->Session->write('companyphone',$this->Setup->getValue('companyphone'));
+			$this->Session->write('openregistration',$this->Setup->getValue('openregistration'));
+			$this->Session->write('userregistration',$this->Setup->getValue('userregistration'));
+			$this->Session->write('companyurl',$this->Setup->getValue('companyurl'));
+			$this->Session->write('companyemail',$this->Setup->getValue('companyemail'));
+			$this->Session->write('companyvat',$this->Setup->getValue('companyvat'));
+			$this->Session->write('companyroc',$this->Setup->getValue('companyroc'));
+			$this->Session->write('companyaccount',$this->Setup->getValue('companyaccount'));
+//			$this->Session->write('companypan',$this->Setup->getValue('companypan'));
+//			$this->Session->write('companytan',$this->Setup->getValue('companytan'));
+		}
 	}
 
 	function _log_access(){
@@ -172,6 +200,21 @@ class AppController extends Controller
 	         $scope = array_diff($scope, $this->paginate['conditions']);
 	     }
 	     return parent::paginate($object , $scope, $whitelist);
+	}
+
+
+	function testModel() {
+	}
+
+
+	function redirect($url, $status = null, $exit = true) {
+		$url = $url."?session_id=".session_id();
+		return parent::redirect($url, $status, $exit);
+	}
+
+	function flash($message, $url, $pause = 1, $layout = 'flash') {
+		$url = $url."?session_id=".session_id();
+		return parent::flash($message, $url, $pause, $layout);
 	}
 
 

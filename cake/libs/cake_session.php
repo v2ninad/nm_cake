@@ -408,6 +408,7 @@ class CakeSession {
 		if (!is_array($name)) {
 			$write = array($name => $value);
 		}
+
 		foreach ($write as $key => $val) {
 			self::__overwrite($_SESSION, Set::insert($_SESSION, $key, $val));
 			if (Set::classicExtract($_SESSION, $key) !== $val) {

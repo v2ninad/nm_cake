@@ -1,7 +1,6 @@
 <?php
 class Income extends AppModel {
 	public $name = 'Income';
-	public $useDbConfig = 'nm';
 	public $displayField = 'member';
 	public $validate = array(
 		'amount' => array(

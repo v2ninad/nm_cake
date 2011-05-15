@@ -1,7 +1,6 @@
 <?php
 class Member extends AppModel {
 	public $name = 'Member';
-	public $useDbConfig = 'nm';
 	public $displayField = 'name';
 	public $validate = array(
 		'name' => array(

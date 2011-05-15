@@ -4,7 +4,9 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
-	<link href="../javascript/index.css" rel="stylesheet" type="text/css" />
+	<link href="/css/index.css" rel="stylesheet" type="text/css" />
+	<script src="/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+
 	<? if ((Configure::read('debug') > 0) && isset($firecake))  $firecake->view($this); ?>
 	<title><?=$companyname?></title>
 	<meta name="description" content="" />

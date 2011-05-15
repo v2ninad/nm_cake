@@ -85,6 +85,7 @@ class ConnectionManager {
  * @return object Instance
  */
 	public static function &getDataSource($name) {
+		//echo "NAME >>".$name;
 		$_this = ConnectionManager::getInstance();
 
 		if (!empty($_this->_dataSources[$name])) {
@@ -214,7 +215,6 @@ class ConnectionManager {
  */
 	protected function _getConnectionObjects() {
 		$connections = get_object_vars($this->config);
-
 		if ($connections != null) {
 			foreach ($connections as $name => $config) {
 				$this->_connectionsEnum[$name] = $this->__connectionData($config);

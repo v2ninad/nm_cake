@@ -7016,3 +7016,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `realname`, `password`, `registration`, `repurchase`, `paid`, `accounts`, `closing`, `cms`, `admin`, `company`) VALUES
 ('admin', 'Vertex Admin', '*33084EA4BF4B1297F5244C64CB9CCFDB7B35D077', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y'),
 ('superadmin', 'Sanjay Khinvsara', '1bb964e6119527cf', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y');
+
+
+CREATE TABLE `cake_sessions` (
+  `id` varchar(255) NOT NULL DEFAULT '',
+  `data` text,
+  `expires` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

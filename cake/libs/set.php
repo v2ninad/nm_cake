@@ -569,6 +569,7 @@ class Set {
  * @return array Extracted data
  */
 	public static function classicExtract($data, $path = null) {
+
 		if (empty($path)) {
 			return $data;
 		}
@@ -666,8 +667,7 @@ class Set {
 				$key = intval($key);
 			}
 			if ($i === count($path) - 1) {
-				if(!is_array($data))
-					$_list[$key] = $data;
+				$_list[$key] = $data;
 			} else {
 				if (!isset($_list[$key])) {
 					$_list[$key] = array();

@@ -350,10 +350,11 @@ class CakeRoute {
 					$named[] = $key . $separator . $value;
 				}
 			}
-			$params['pass'] = $params['pass'] . '/' . implode('/', $named);
+			//custom by Ninad for pagination in search
+			//$params['pass'] = $params['pass'] . '/' . implode('/', $named);
+			//$params['pass'] = implode('/', $named) . '/' . $params['pass'];
 		}
 		$out = $this->template;
-
 		$search = $replace = array();
 		foreach ($this->keys as $key) {
 			$string = null;
@@ -366,7 +367,6 @@ class CakeRoute {
 			$replace[] = $string;
 		}
 		$out = str_replace($search, $replace, $out);
-
 		if (strpos($this->template, '*')) {
 			$out = str_replace('*', $params['pass'], $out);
 		}

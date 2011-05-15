@@ -1,0 +1,43 @@
+I just made a url session implementation in cakephp, I set cakephp to use trans_sid and not cookies:
+
+ini_set("session.use_cookies",0);
+ini_set("session.use_trans_sid",1);
+
+this could probably be done using: http://bakery.cakephp.org/articles/admad/2009/09/02/how-to-bend-cakephp-s-session-handling-to-your-needs and used a beforefilter to read a session id form url parameter and set session id from that, and cookie if session id was not set as url parameter
+
+// Use sid from post
+if (!empty($this->params['url']['sid'])) {
+    $this->Session->id($this->params['url']['sid']);
+}
+// Or failover to cookie
+else
+{
+    $this->Session->id($this->Cookie->read('CAKEPHP'));
+}
+
+Remember to override the url function in the AppHelper class
+
+function url($url = null, $full = false) {
+    return parent::url($url, $full)."/?sid=".session_id();
+}
+
+and redirect and flash in the AppController class
+
+function redirect($url, $status = null, $exit = true) {
+    $url = $url."?sid=".session_id();
+    return parent::redirect($url, $status, $exit);
+}
+
+function flash($message, $url, $pause = 1, $layout = 'flash') {
+    $url = $url."?sid=".session_id();
+    return parent::flash($message, $url, $pause, $layout);
+}
+
+http://stackoverflow.com/questions/3675067/cakephp-session-without-cookies
+
+----
+
+
+
+
+http://stackoverflow.com/questions/1794412/adding-a-prefix-to-every-url-in-cakephp/1878334#1878334

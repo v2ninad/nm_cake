@@ -1,7 +1,6 @@
 <?php
 class Package extends AppModel {
 	public $name = 'Package';
-	public $useDbConfig = 'nm';
 	public $primaryKey = 'code';
 	public $displayField = 'name';
 	public $validate = array(

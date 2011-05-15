@@ -6,7 +6,7 @@
   </tr>
   <tr>
     <th height="20">&nbsp;&nbsp;<b><font color="#666666">
-      <?=$_SESSION['adminrealname']?>
+      <?=$this->Session->read('adminrealname')?>
     </font></b>&nbsp; Logged In!! </th>
     <th width="470">&nbsp;</th>
     <th width="86"><a href="admin/logout">Logout</a></th>

@@ -1,7 +1,6 @@
 <?php
 class News extends AppModel {
 	public $name = 'News';
-	public $useDbConfig = 'nm';
 	public $displayField = 'title';
 	public $validate = array(
 		'subject' => array(

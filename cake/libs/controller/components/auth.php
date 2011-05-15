@@ -370,7 +370,6 @@ class AuthComponent extends Component {
 					return true;
 				}
 			}
-
 			$this->Session->setFlash($this->loginError, $this->flashElement, array(), 'auth');
 			$request->data[$model->alias][$this->fields['password']] = null;
 			return false;
@@ -438,7 +437,6 @@ class AuthComponent extends Component {
 		if ($this->isAuthorized($type)) {
 			return true;
 		}
-
 		$this->Session->setFlash($this->authError, $this->flashElement, array(), 'auth');
 		$controller->redirect($controller->referer(), null, true);
 		return false;
@@ -672,7 +670,6 @@ class AuthComponent extends Component {
 		if (empty($data)) {
 			$data = $this->data;
 		}
-
 		if ($user = $this->identify($data)) {
 			$this->Session->write($this->sessionKey, $user);
 			$this->_loggedIn = true;

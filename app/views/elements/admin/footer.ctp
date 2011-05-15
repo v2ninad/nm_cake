@@ -1,1 +1,1 @@
-<?php echo $this->element('admin/menu'); ?>
+<?php echo $this->element('footer'); ?>

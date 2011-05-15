@@ -1,5 +1,6 @@
 <?php
-	if (isset($_SESSION['adminname']))
+	$adminname = $this->Session->read('adminname');
+	if (!empty($adminname))
 	{
 ?>
 
@@ -57,10 +58,10 @@ function redirect2cleardb()
                   <td width="100%" background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="userprofile.php">User Profile </a></div></td>
                 </tr>
                 <tr>
-                  <td background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="changepassword.php">Change Password</a></div></td>
+                  <td background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="<?=$this->Html->url('/admin/changepassword')?>">Change Password</a></div></td>
                 </tr>
                 <tr>
-                  <td background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="companysetup.php">Company Setup</a></div></td>
+                  <td background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="<?=$this->Html->url('/admin/setup')?>">Company Setup</a></div></td>
                 </tr>
               </table>
             </div></td>
@@ -74,7 +75,7 @@ function redirect2cleardb()
             <td  align="center"><div align="left">
               <table width="100%" border="1" cellpadding="2" cellspacing="0" id="tbldownline" class="AdminSubMenuPaneltext">
                 <tr>
-                  <td width="100%" background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="search.php">Search</a><a href="userprofile.php"></a></div></td>
+                  <td width="100%" background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="<?=$this->Html->url('/admin/search')?>">Search</a><a href="userprofile.php"></a></div></td>
                 </tr>
                 <tr>
                   <td background="/img/sub.jpg"><div align="left">&nbsp;&nbsp;<a href="../registration/registration.php" target="_blank">Registration</a><a href="changepassword.php"></a></div></td>

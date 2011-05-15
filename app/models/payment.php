@@ -1,7 +1,6 @@
 <?php
 class Payment extends AppModel {
 	public $name = 'Payment';
-	public $useDbConfig = 'nm';
 	public $displayField = 'member';
 	public $validate = array(
 		'doi' => array(
