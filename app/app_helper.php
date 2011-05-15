@@ -32,15 +32,16 @@ App::import('View', 'Helper', false);
 class AppHelper extends Helper {
 
 	function url($url = null, $full = false) {
-		echo "<br> URL == > ".$url;
 		$tmp_url = parent::url($url, $full);
 		if (!strstr($tmp_url,"session_id")) {
+			//return  parent::url($url, $full)."/?session_id=".session_id();;
 			if (! strstr($tmp_url, "?")) {
 				$tmp_url =  parent::url($url, $full)."/?session_id=".session_id();
 			} else {
 				$tmp_url = parent::url($url, $full)."&session_id=".session_id();
 			}
 		}
+		//
 		return $tmp_url;
 	}
 }
