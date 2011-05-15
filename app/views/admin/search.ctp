@@ -4,7 +4,6 @@
 	$url = "";
 
 ?>
-	<a href="<?=$this->Html->url('/admin/useraccount')?>">click</a>
 				<br>
                 <p align="center" class="pagetitle">Parameterised Search!</p>
                 <form name="officeday" action="/admin/search" method="get" >

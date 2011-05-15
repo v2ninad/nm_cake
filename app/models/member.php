@@ -135,13 +135,13 @@ class Member extends AppModel {
 	);
 
 	public $hasOne = array(
-	'package' => array(
-		'className' => 'package',
-		'foreignKey' => 'code',
-		'conditions' => '',
-		'fields' => '',
-		'order' => ''
-	)
-);
+		'package' => array(
+			'className' => 'package',
+			'foreignKey' => false,
+			'conditions' => array ('Member.product = `package`.`code`'),
+			'fields' => '',
+			'order' => ''
+		)
+	);
 
 }

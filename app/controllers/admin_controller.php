@@ -181,8 +181,11 @@ class AdminController extends AppController {
 			$this->Session->setFlash('Please provide Member Id');
 			echo $this->referer();
 			$this->redirect($this->referer());
-
 		}
+
+		$conditions = array('Member.id'=>$id);
+		$data = $this->Member->find('all',array('conditions'=>$conditions));
+		$this->set('data', $data[0]);
 	}
 
 	function logout() {

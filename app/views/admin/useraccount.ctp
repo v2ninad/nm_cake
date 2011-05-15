@@ -1,3 +1,8 @@
+<?
+	$member = $data['Member'];
+	$package = $data['Package'];
+
+?>
 				<br>
                 <blockquote>
 				<p align="center" class="pagetitle"><strong>User Account !</strong></p>
@@ -7,55 +12,55 @@
                         <tr bordercolor="#CCCCCC" class="pagetext">
                             <td width="196"><font face="Verdana, Arial, Helvetica, sans-serif">Member Code <span class="style31"></span></font></td>
                             <td width="194"><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="id" type="text" class="shadeform" id="id" value="<?=mysql_result($rssetup,0,"mm_id")?>" readonly="1">
+                                    <input name="id" type="text" class="shadeform" id="id" value="<?=$member["id"]?>" readonly="1">
                             </span></font></div></td>
                         </tr>
                         <tr bordercolor="#CCCCCC" class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">Member Name</font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="name" type="text" class="shadeform" id="name" value="<?=mysql_result($rssetup,0,"mm_name")?>">
+                                    <input name="name" type="text" class="shadeform" id="name" value="<?=$member["name"]?>">
                     * </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
                           <td><font face="Verdana, Arial, Helvetica, sans-serif">Member Cheque Name</font></td>
                           <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                              <input name="chequename" type="text" class="shadeform" id="chequename" value="<?=mysql_result($rssetup,0,"mm_chequename")?>">
+                              <input name="chequename" type="text" class="shadeform" id="chequename" value="<?=$member["chequename"]?>">
       * </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">City<span class="style32"></span></font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="city" type="text" class="shadeform" value="<?=mysql_result($rssetup,0,"mm_city")?>">
+                                    <input name="city" type="text" class="shadeform" value="<?=$member["city"]?>">
                     * </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">PIN</font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="pin" type="text" class="shadeform" id="pin" value="<?=mysql_result($rssetup,0,"mm_pin")?>">
+                                    <input name="pin" type="text" class="shadeform" id="pin" value="<?=$member["pin"]?>">
                             </span></font></div></td>
                         </tr>
                         <tr bordercolor="#CCCCCC" class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">Contact Number</font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                <input name="phone" type="text" class="shadeform" id="phone" value="<?=mysql_result($rssetup,0,"mm_phone")?>">
+                                <input name="phone" type="text" class="shadeform" id="phone" value="<?=$member["phone"]?>">
 </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">Member Address <span class="style32"></span></font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="address" type="text" class="shadeform" id="address" value="<?=mysql_result($rssetup,0,"mm_address")?>">
+                                    <input name="address" type="text" class="shadeform" id="address" value="<?=$member["address"]?>">
                     * </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">Challan Details </font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="challandetails" type="text" class="shadeform" id="challandetails" value="<?=mysql_result($rssetup,0,"mm_challandetails")?>">
+                                    <input name="challandetails" type="text" class="shadeform" id="challandetails" value="<?=$member["mm_challandetails"]?>">
                             </span></font></div></td>
                         </tr>
                         <tr class="pagetext">
                             <td><font face="Verdana, Arial, Helvetica, sans-serif">Bill Details </font></td>
                             <td><div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span class="style30">
-                                    <input name="billdetails" type="text" class="shadeform" id="billdetails" value="<?=mysql_result($rssetup,0,"mm_billdetails")?>">
+                                    <input name="billdetails" type="text" class="shadeform" id="billdetails" value="<?=$member["billdetails"]?>">
                             </span></font></div></td>
                         </tr>
 						<?php
