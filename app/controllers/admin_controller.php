@@ -202,7 +202,7 @@ class AdminController extends AppController {
 		$conditions = array('Member.id'=>$id);
 		$data = $this->Member->find('all',array('conditions'=>$conditions));
 
-		$packages = $this->Package->query('Select * from packages');
+		$packages = $this->Package->get_all_packages();
 		$this->set('data', $data[0]);
 		$this->set('packages',$packages);
 	}

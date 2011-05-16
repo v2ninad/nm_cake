@@ -1,6 +1,10 @@
- <p align="center" class="pagetitle style3">~ Purchase Order cum Distributorship Application Form&nbsp;~<br>
+<?
+	$member = (isset($this->data['Member']))?$this->data['Member']:array();
+	$aminname = $this->Session->read('adminname');
+?>
+<p align="center" class="pagetitle style3">~ Purchase Order cum Distributorship Application Form&nbsp;~<br>
           [ Form 1A ]</p>
-<form action="validateregistration.php" method="post" name="form1" >
+<form action="validateregistration.php" method="post" id="frm_registration" name="form1" >
 	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="0" class="formtext">
 		<tr>
 			<th align="center" colspan="4">- Contact Information -</th>
@@ -8,21 +12,21 @@
 		<tr>
 			<td>Date of Application </td>
 			<td colspan="3" align="left">
-			  <input name="data[Member][doj]" type="text" tabindex="1" value="<?php if(isset($doa)) echo $doa; else echo date('d/m/Y')?>" size="30" maxlength="10">
+			  <input name="doj" id="doj" type="text" tabindex="1" value="<?php if(isset($member['doa'])) echo $member['doa']; else echo date('d/m/Y')?>" size="30" maxlength="10">
 			  <span class="style1 style4">*</span>[dd/mm/yyyy]</span>
 			</td>
 		</tr>
 		<tr>
 			<td width="21%">Applicant's Name or<br>Enterprise Name</td>
 			<td colspan="3"  align="left">
-				<input name="data[Member][name'" type="text" id="name" tabindex="2" value="<?php if(isset($name)) echo $name; ?>" size="80">
+				<input name="data[Member][name]" type="text" id="name" tabindex="2" value="<?php if(isset($member['name'])) echo $member['name']; ?>" size="80">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
 		<tr>
 			<td>Nominee Name</td>
 			<td align="left">
-				<input name="data[Member][nominee]" type="text" id="nominee" tabindex="3" value="<?php if(isset($nominee)) echo $nominee; ?>" size="30">
+				<input name="data[Member][nominee]" type="text" id="nominee" tabindex="3" value="<?php if(isset($member['nominee'])) echo $member['nominee']	; ?>" size="30">
 			</td>
 			<td align="left">Nominee Relationship </td>
 			<td align="left">
@@ -31,7 +35,7 @@
 					<option value="Father">Father</option>
 					<option value="Sister">Sister</option>
 					<option value="Wife">Wife</option>
-					<option value="Son" selected>Son</option>
+					<option value="Son">Son</option>
 					<option value="Daughter">Daughter</option>
 					<option value="Friend">Friend</option>
 					<option value="Other">Other</option>
@@ -45,36 +49,36 @@
 		<tr>
 			<td>Address</td>
 			<td colspan="3" align="left">
-				<textarea name="data[Member][address]" cols="60" id="address"  tabindex="6"><?php if(isset($address)) echo $address; ?></textarea>
+				<textarea name="data[Member][address]" cols="60" id="address"  tabindex="6"><?php if(isset($member['address'])) echo $member['address']; ?></textarea>
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
 		<tr>
 			<td>City</td>
 			<td width="29%" align="left">
-				<input name="data[Member][city]" type="text" id="city" tabindex="7" value="<?php if(isset($city)) echo $city; ?>" size="30">
+				<input name="data[Member][city]" type="text" id="city" tabindex="7" value="<?php if(isset($member['city'])) echo $member['city']; ?>" size="30">
 				<span class="style20 style1 style4">*</span></td>
 			<td width="21%" align="left">PIN Code</td>
 			<td width="29%" align="left">
-				<input name="data[Member][pin]" type="text"  id="pin" tabindex="8" value="<?php if(isset($pin)) echo $pin; ?>" size="30">
+				<input name="data[Member][pin]" type="text"  id="pin" tabindex="8" value="<?php if(isset($member['pin'])) echo $member['pin']; ?>" size="30">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
 		<tr>
 			<td>State</td>
 			<td colspan="3" align="left">
-				<input name="data[Member][state]" type="text" id="state" tabindex="9" value="<?php if(isset($country)) echo $country; ?>" size="30">
+				<input name="data[Member][state]" type="text" id="state" tabindex="9" value="<?php if(isset($member['state'])) echo $member['country']; ?>" size="30">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
 		<tr>
 			<td>Phone</td>
 			<td align="left">
-				<input name="data[Member][email]" type="text" id="email" tabindex="10" value="<?php if(isset($email)) echo $email; ?>" size="30">
+				<input name="data[Member][email]" type="text" id="email" tabindex="10" value="<?php if(isset($member['email'])) echo $member['email']; ?>" size="30">
 			</td>
 			<td align="left">Mobile Number </td>
 			<td align="left">
-				<input name="data[Member][phone]" type="text" id="phone" tabindex="11" value="<?php if(isset($phone)) echo $phone; ?>" size="30">
+				<input name="data[Member][phone]" type="text" id="phone" tabindex="11" value="<?php if(isset($member['phone'])) echo $member['phone']; ?>" size="30">
 			</td>
 		</tr>
 		<tr>
@@ -83,17 +87,17 @@
 		<tr>
 			<td>Name on Cheque/DD </td>
 			<td align="left">
-				<input name="data[Member][chequename]" type="text" id="chequename" tabindex="12" value="<?php if(isset($chequename)) echo $chequename; ?>" size="30">
+				<input name="data[Member][chequename]" type="text" id="chequename" tabindex="12" value="<?php if(isset($member['chequename'])) echo $member['chequename']; ?>" size="30">
 			</td>
 			<td align="left">Pan Number </td>
 			<td align="left">
-				<input name="data[Member][pan]" type="text" id="pan" tabindex="13" value="<?php if(isset($pan)) echo $pan; ?>" size="30">
+				<input name="data[Member][pan]" type="text" id="pan" tabindex="13" value="<?php if(isset($member['pan'])) echo $member['pan']; ?>" size="30">
 			</td>
 		</tr>
 		<tr>
 			<td>Additional Info If Any </td>
 			<td colspan="3" align="left">
-				<textarea name="data[Member][notes]" cols="60" id="notes" tabindex="14"><?php if(isset($notes)) echo $notes; ?></textarea>
+				<textarea name="data[Member][notes]" cols="60" id="notes" tabindex="14"><?php if(isset($member['notes'])) echo $member['notes']; ?></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -102,43 +106,21 @@
 		<tr>
 			<td>Distributor ID</td>
 			<td align="left"><span class="style20">
-			  <input name="data[Member][id]" type="text" tabindex="15" value="<?php if($autoid == 'y') {echo "AUTOMATIC"; } else{if(isset($memberid)) echo $memberid;}?>" size="30" <?php if($autoid == 'y') echo "readonly";?>>
-			  <span class="style20 style1 style4">*</span>
-			  <?php
-			$paidflag = false;
-			if(isset($adminname))
-				{
-				$paidflag = true;
+				<input name="data[Member][id]" type="text" tabindex="15" value="<?php if($autoid == 'y') {echo "AUTOMATIC"; } else{if(isset($member['id'])) echo $member['id'];}?>" size="30" <?php if($autoid == 'y') echo "readonly";?>>
+				<span class="style20 style1 style4">*</span>
+<?php
+				if($paidflag == true) {
+?>
+				  <input name="data[Member][paid]" type="checkbox"  tabindex="16"  checked="1" readonly="1"><?php if(isset($member['paid'])) echo "checked";?> &nbsp;Paid?
+<?php
 				}
-			else
-				{
-				if(isset($username) and $userregistration == "y")
-					{
-					$rssetup = mysql_query("select mm_credits from membermaster where mm_id = '" . $username . "'",$cn);
-					if(mysql_result($rssetup,0,"mm_credits") <= 0)
-						{
-						$paidflag = false;
-						}
-					else
-						{
-						$paidflag = true;
-						}
-					}
-				}
-			if($paidflag == true)
-				{
-				?>
-			  <input name="data[Member][paid]" type="checkbox"  tabindex="16"  checked="1" readonly="1"><?php //if(isset($paid)) echo "checked";?>
-			&nbsp;Paid?
-			  <?php
-				}
-				?>
+?>
 			</span></td>
 			<td align="left">Leg/Side</td>
 			<td align="left">
 				<select name="data[Member][position]" class="pagetext" id="leg"  tabindex="17">
-<?php				if(isset($leg))	{	?>
-						<option value="<?=$leg?>" selected><?=ucfirst($leg)?> Leg</option>
+<?php				if(isset($member['position']))	{	?>
+						<option value="<?=$member['position']?>" selected><?=ucfirst($member['position'])?> Leg</option>
 <?php				} else {	?>
 						<option value="left" selected>Left Leg</option>
 						<option value="right">Right Leg</option>
@@ -149,25 +131,25 @@
 		<tr>
 			<td>Introducer's ID<br></td>
 			<td align="left">
-				<input name="data[Member][sponcerid]" type="text" id="introducer" tabindex="18" value="<?php if(isset($introducer)) echo $introducer; ?>" size="30">
+				<input name="data[Member][sponcerid]" type="text" id="introducer" tabindex="18" value="<?php if(isset($member['sponcerid'])) echo $member['sponcerid']; ?>" size="30">
 			  <span class="style20 style1 style4">*</span>
 			</td>
 			<td align="left">Password</td>
 			<td align="left">
-				<input name="password" type="data[password][password]" id="password" tabindex="19" value="<?php if(isset($password)) echo $password; else { if(isset($leg)) echo "123456789987654321"; else echo "123456";}?>" size="30" >
+				<input name="data[Member][password]" type="password" id="password" tabindex="19" value="<?php if(isset($member['password'])) echo $member['password']; else { if(isset($leg)) echo "123456789987654321"; else echo "123456";}?>" size="30" >
 			</td>
 		</tr>
 		<tr>
 			<td>Payment Mode <br></td>
 			<td align="left">
-				<select name="paymode" id="paymode" tabindex="20" onChange="menuselected()" onFocus="menuselected()" >
+				<select name="data[Member][paymode]" id="paymode" tabindex="20" onChange="menuselected()" onFocus="menuselected()" >
 					<option value="Pin Number">Pin Number</option>
 				</select>
 				<span class="style20 style1 style4">*</span>
 			</td>
 			<td align="left" valign="middle">Pin Number</td>
 			<td align="left" valign="middle">
-				<textarea name="paydetails" cols="30"  id="paydetails"  tabindex="21"><?php if(isset($paydetails)) echo $paydetails; ?></textarea>
+				<textarea name="data[Member][paydetails]" cols="30"  id="paydetails"  tabindex="21"><?php if(isset($member['paydetails'])) echo $member['paydetails']; ?></textarea>
 			</td>
 		</tr>
 		<SCRIPT LANGUAGE="javascript">
@@ -204,12 +186,12 @@
 		<tr>
 			<td id="banknamecaption" style="display:none">Bank Name </td>
 			<td align="left" id="bankname" style="display:none">
-				<input name="bank" type="text" id="bank" tabindex="18" value="<?php if(isset($introducer)) echo $introducer; ?>" size="30">
+				<input name="data[Member][bank]" type="text" id="bank" tabindex="18" value="<?php if(isset($member['bank'])) echo $member['bank']; ?>" size="30">
 				<span class="style20 style1 style4">*</span>
 			</td>
 			<td id="ddcaption" style="display:none">DD Number </td>
 			<td align="left" id="dd" style="display:none">
-				<input name="dd" type="text" id="dd" tabindex="18" value="<?php if(isset($dd)) echo $dd; ?>" size="30">
+				<input name="data[Member][dd]" type="text" id="dd" tabindex="18" value="<?php if(isset($member['dd'])) echo $member['dd']; ?>" size="30">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
@@ -217,15 +199,14 @@
 			<td>Product</td>
 			<td colspan="3" align="left">
 <?php
-				$rssetup = mysql_query("select * from packagemaster order by pm_price",$cn);
-				if($rssetup and mysql_num_rows($rssetup) > 0) {
+				if(count($packages) > 0) {
 ?>
 					<select name="product" id="product" tabindex="22">
 <?php
-					for($i=0;$i<mysql_num_rows($rssetup);$i++) {
+					for($i=0;$i<count($packages);$i++) {
 ?>
-						<option value="<?=mysql_result($rssetup,$i,"pm_code")?>">
-							<?=mysql_result($rssetup,$i,"pm_name")?>
+						<option value="<?=$packages[$i]['code']?>">
+							<?=$packages[$i]['name']?>
 						</option>
 <?
 					}// end for
@@ -235,7 +216,7 @@
 				}// end if
 				if(isset($adminname)) {
 ?>
-					<input name="productissued" type="checkbox" id="productissued"  tabindex="23">Issued?
+					<input name="data[Member][productissued]" type="checkbox" id="productissued"  tabindex="23">Issued?
 <?php
 				}
 ?>
@@ -244,15 +225,14 @@
 		<tr>
 			<td>Joining Franchisee </td>
 <?php
-			$rssetup = mysql_query("select * from franchiseemaster order by fm_name",$cn);
-			if($rssetup and mysql_num_rows($rssetup) > 0) {
+			if(count($franchisees) > 0) {
 ?>
 				<td align="left">
-					<select name="beneficiaryfranchisee" id="beneficiaryfranchisee" tabindex="24">
+					<select name="data[Member][joiningfranchisee]" id="joiningfranchisee" tabindex="24">
 <?php
-					for($i=0;$i<mysql_num_rows($rssetup);$i++) {
+					for($i=0;$i<count($franchisees);$i++) {
 ?>
-						<option value="<?=mysql_result($rssetup,$i,"fm_code")?>" <?php if(isset($beneficiaryfranchisee) and $beneficiaryfranchisee == mysql_result($rssetup,$i,"fm_code") or (mysql_result($rssetup,$i,"fm_code") == 0)) echo "selected" ?>><?=mysql_result($rssetup,$i,"fm_name")?></option>
+						<option value="<?=$franchisees[$i]["code"]?>" <?php if(isset($member['joiningfranchisee']) and $member['joiningfranchisee']== $franchisees[$i]['code'] or ($franchisees[$i]['code'] == 0)) echo "selected" ?>><?=$franchisees[$i]['name']?></option>
 <?
 					}//end for
 ?>
@@ -260,11 +240,11 @@
 				</td>
 				<td align="left">Service Franchisee </td>
 				<td align="left">
-					<select name="servicefranchisee" id="servicefranchisee" tabindex="25">
+					<select name="data[Member][servicefranchisee]" id="servicefranchisee" tabindex="25">
 <?php
-					for($i=0;$i<mysql_num_rows($rssetup);$i++) {
+					for($i=0;$i<count($franchisees);$i++) {
 ?>
-						<option value="<?=mysql_result($rssetup,$i,"fm_code")?>" <?php if(isset($servicefranchisee) and $servicefranchisee == mysql_result($rssetup,$i,"fm_code")  or (mysql_result($rssetup,$i,"fm_code") == 0)) echo "selected" ?>><?=mysql_result($rssetup,$i,"fm_name")?></option>
+						<option value="<?=$franchisees[$i]["code"]?>" <?php if(isset($member['servicefranchisee']) and $member['servicefranchisee'] == $franchisees[$i]['code']  or ($franchisees[$i]['code'] == 0)) echo "selected" ?>><?=$franchisees[$i]['name']?></option>
 <?
 					}//end for
 ?>
@@ -278,10 +258,72 @@
 			<td colspan="4">
 				<div align="center">
 					<p>
-						<input name="Submit" type="submit"  tabindex="26" value="Register Now">
+						<input name="Submit" type="submit" id="submit" tabindex="26" value="Register Now">
 					</p>
 				</div>
 			</td>
 		</tr>
 	</table>
 </form>
+<script src="/js/jquery.validate.min.js"></script>
+<script>
+$(function(){
+	$(document).ready(function(){
+
+		//http://docs.jquery.com/Plugins/Validation/validate#toptions
+		$('#frm_registration').validate({
+			rules: {
+				doj: {
+					required : true,
+					date : true
+				},
+				name: {required : true
+
+				}
+			},
+			messages: {
+				doj: {
+					required : "Required input.",
+					date : "Please enter valid date"
+				},
+				name: {
+					required : "Please enter applicant's name"
+				}
+			},
+			submitHandler: function(form) {
+				// check valid date
+				$.ajax({type: "POST", async:false, url: "/ajax/is_valid_date/"+escape($("#doj").val()), data: "",
+					success: function(msg) {
+						if (msg == "1") {
+							form.submit();
+						} else {
+							$("#site_message").html('Please enter valid date.');
+						}
+
+					}
+				});
+
+
+			}
+
+		});
+
+//		$("#submit").click(function() {
+//			if($.trim($("#doj").val()) == "") {
+//				$("#site_message").html('Please enter valid date');
+//				//$(this).scrollTop($('a#site_message_link').position().top)
+//				document.location.href = '#site_message_link';
+//				return false;
+//			}
+//
+//			if($.trim($("#name").val()) == "") {
+//				$("#site_message").html('Please enter applicant\'s name.');
+//				//$(this).scrollTop($('a#site_message_link').position().top)
+//				document.location.href = '#site_message_link';
+//				return false;
+//			}
+			
+//		});
+	});
+});
+</script>

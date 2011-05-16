@@ -281,3 +281,10 @@ div.pagination {
 	text-align: right;
 	padding-right: 50px;
 }
+
+label.error {
+	float: none;
+	color: red;
+	padding-left: .5em;
+	vertical-align: top;
+}

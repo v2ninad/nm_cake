@@ -96,4 +96,16 @@ class Package extends AppModel {
 			'order' => ''
 		)
 	);
+
+	
+	public function get_all_packages() {
+		$tmp_data = $this->query('Select * from packages as Package order by price');
+		$data = array();
+		foreach ($tmp_data as $key => $value) {
+			$data[] = $value['Package'];
+		}
+		return $data;
+
+
+	}
 }

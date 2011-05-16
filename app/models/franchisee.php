@@ -63,4 +63,13 @@ class Franchisee extends AppModel {
 			),
 		),
 	);
+
+	public function get_all_franchisees(){
+		$tmp_data = $this->find('all', '*', 'name asc');
+		$data = array();
+		foreach ($tmp_data as $key => $value) {
+			$data[] = $value['Franchisee'];
+		}
+		return $data;
+	}
 }

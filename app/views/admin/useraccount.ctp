@@ -1,7 +1,7 @@
 <?
+
 	$member = $data['Member'];
 	$package = $data['package'];
-	//$packages;
 
 ?>
 				<br>
@@ -69,12 +69,13 @@
                           <td><label>
                             <select name="data[Member][product]" id="product">
 							<?php
+
 								for($i=0; $i <= count($packages); $i++)
 								{
-									if($package["code"] == $packages[$i]['packages']['code'])
-										echo "<option value='".$packages[$i]['packages']["code"]."' selected='selected'>".$packages[$i]['packages']["name"]."</option>";
+									if($package["code"] == $packages[$i]['code'])
+										echo "<option value='".$packages[$i]["code"]."' selected='selected'>".$packages[$i]["name"]."</option>";
 									else
-										echo "<option value='".$packages[$i]['packages']["code"]."'>".$packages[$i]['packages']["name"]."</option>";
+										echo "<option value='".$packages[$i]["code"]."'>".$packages[$i]["name"]."</option>";
 								}
 							?>
 

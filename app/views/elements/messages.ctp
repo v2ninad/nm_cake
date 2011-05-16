@@ -22,4 +22,5 @@
 //	}
 
 ?>
+<a id="site_message_link"></a>
 <div align=center class=messagetext id="site_message"><?=$message?></div>
