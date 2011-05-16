@@ -88,7 +88,7 @@
                             <br><?=$search["sponcerid"]?>
                             <br><?=$search["aboveid"]?></a>
 						</td>
-                        <td width='45%' align=center><a target="_blank" title="Click for User Account" href=useraccount.php?id=<?=$search["id"]?>>Name := <?=$search["name"]?></a><br>
+                        <td width='45%' align=center><a target="_blank" title="Click for User Account" href=<?=$this->Html->url("/admin/useraccount/".$search["id"])?>>Name := <?=$search["name"]?></a><br>
                             >D.O.J. :=
                             <?=$search["doj"]?><br>
                       Package := <?=$package["name"] . "/-";?><br></td>

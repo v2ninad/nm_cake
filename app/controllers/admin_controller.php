@@ -183,6 +183,22 @@ class AdminController extends AppController {
 			$this->redirect($this->referer());
 		}
 
+		if (isset($this->data['submit'])) {
+			// check if password to update
+			$data = $this->data['Member'];
+			if (isset($this->data['Member']['changepass'])) {
+				$data['password'] = $this->Member->getPassword($this->data['Member']['password']);
+			} else {
+				unset($data['password']);
+			}
+
+			if ($this->Member->save($data)) {
+				$this->Session->setFlash('Account is saved successfully.');
+			} else {
+				$this->Session->setFlash('Account could not be saved. Please try again. If you are getting this error frequently, please contact web administratot.');
+			}
+		}
+
 		$conditions = array('Member.id'=>$id);
 		$data = $this->Member->find('all',array('conditions'=>$conditions));
 
