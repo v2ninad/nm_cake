@@ -12,14 +12,14 @@
 		<tr>
 			<td>Date of Application </td>
 			<td colspan="3" align="left">
-			  <input name="doj" id="doj" type="text" tabindex="1" value="<?php if(isset($member['doa'])) echo $member['doa']; else echo date('d/m/Y')?>" size="30" maxlength="10">
+			  <input name="data[Member][doj]" id="doj" type="text" tabindex="1" value="<?php if(isset($member['doa'])) echo $member['doa']; else echo date('d/m/Y')?>" size="30" maxlength="10">
 			  <span class="style1 style4">*</span>[dd/mm/yyyy]</span>
 			</td>
 		</tr>
 		<tr>
 			<td width="21%">Applicant's Name or<br>Enterprise Name</td>
 			<td colspan="3"  align="left">
-				<input name="data[Member][name]" type="text" id="name" tabindex="2" value="<?php if(isset($member['name'])) echo $member['name']; ?>" size="80">
+				<input name="data[Member][name]" type="text" id="nm" tabindex="2" value="<?php if(isset($member['name'])) echo $member['name']; ?>" size="80">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
@@ -269,7 +269,9 @@
 <script>
 $(function(){
 	$(document).ready(function(){
+//		$("#doj").rules("add", { required: true, date:true, messages: { required: "Please enter valid date.", minlength: "INvalid date. Please enter valid date."}});
 
+//check for solution == http://forum.jquery.com/topic/jquery-validate-validating-on-input-id-instead-of-name
 		//http://docs.jquery.com/Plugins/Validation/validate#toptions
 		$('#frm_registration').validate({
 			rules: {
@@ -277,8 +279,9 @@ $(function(){
 					required : true,
 					date : true
 				},
-				name: {required : true
-
+				nominee: {
+					required : true,
+					minlength: 5
 				}
 			},
 			messages: {
@@ -286,13 +289,14 @@ $(function(){
 					required : "Required input.",
 					date : "Please enter valid date"
 				},
-				name: {
-					required : "Please enter applicant's name"
+				nominee: {
+					required : "Please enter applicant's name",
+					minlength: jQuery.format("At least {0} characters required!")
 				}
 			},
 			submitHandler: function(form) {
 				// check valid date
-				$.ajax({type: "POST", async:false, url: "/ajax/is_valid_date/"+escape($("#doj").val()), data: "",
+				$.ajax({type: "POST", async:false, url: "/ajax/is_valid_date", data: "dt="+escape($("#doj").val()),
 					success: function(msg) {
 						if (msg == "1") {
 							form.submit();

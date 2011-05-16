@@ -13,6 +13,9 @@ class AjaxController extends AppController {
 
 	public function is_valid_date($date=null) {
 		if(empty($date)) {
+			$date = $_POST['dt'];
+		}
+		if (empty($date)) {
 			echo "0"; exit;
 		}
 		if(strlen($date) < 10) {
