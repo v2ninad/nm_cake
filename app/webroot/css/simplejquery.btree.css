@@ -1,0 +1,46 @@
+#tree {}
+
+    #tree table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+        #tree table td { margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            vertical-align: top;
+        }
+
+            #tree table td div.leaf {
+
+            }
+
+            #tree table td div.content {
+                cursor: pointer;
+                font-size: 14px;
+                font-family: Arial;
+
+                font-weight: bold;
+                background: #3d5e79;
+
+                -webkit-border-radius: 30px;
+                -khtml-border-radius: 30px;
+                -moz-border-radius: 30px;
+                border-radius: 30px;
+            }
+
+                #tree table td div.hover{
+                    background: #3d5e79;
+                    color: #fff;
+                }
+
+            #tree table td div.border-top {
+                border-top: 1px solid #3d5e79;
+            }
+
+            #tree table td div.vBorder-top,
+            #tree table td div.vBorder-bottom {
+                border-left: 1px solid #3d5e79;
+                width: 0;
+            }
