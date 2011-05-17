@@ -6,7 +6,7 @@ class AppController extends Controller
 	//var $components = array('RequestHandler','Cookie','Session','Auth','Messages','Ssl');
 
 	//var $helpers = array('Html','Form','Session','Javascript','Time','Number','Text','Role', 'Allcustom');
-	var $components = array('RequestHandler','Cookie','Session','Auth');
+	var $components = array('RequestHandler','Cookie','Session');
 	var $helpers = array('Html','Form','Session');
 
 	var $sslSettings = array(
@@ -34,6 +34,8 @@ class AppController extends Controller
 
 	function beforeFilter()
 	{
+		//App::import('component', 'Auth');
+
 		//$ses_id = $this->params['get']['session_id'];
 		if(!empty($_REQUEST['session_id'])) {
 			$this->Session->id($_REQUEST['session_id']);
