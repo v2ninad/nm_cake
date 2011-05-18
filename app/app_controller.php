@@ -6,7 +6,7 @@ class AppController extends Controller
 	//var $components = array('RequestHandler','Cookie','Session','Auth','Messages','Ssl');
 
 	//var $helpers = array('Html','Form','Session','Javascript','Time','Number','Text','Role', 'Allcustom');
-	var $components = array('RequestHandler','Cookie','Session');
+	var $components = array('RequestHandler','Cookie','Session','Auth');
 	var $helpers = array('Html','Form','Session');
 
 	var $sslSettings = array(

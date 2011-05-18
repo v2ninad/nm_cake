@@ -17,8 +17,10 @@ class TestController extends AppController {
 	}
 	
 	public function test () {
-		$this->Btree->create_stack(4);
-		pr($this->Btree->id_stack);
+		$data = $this->Btree->build_tree("VS16194631",3);
+		//pr($this->Btree->id_stack);
+//		$data = $this->Member->read("*","VS16194631");
+		pr($data);
 	}
 
 	

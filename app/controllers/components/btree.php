@@ -44,7 +44,20 @@ class BtreeComponent extends Component {
 */
 	public $placeholder_counts;
 
-	public function create_stack($level=0) {
+/**
+* Model name to refer for connection
+*
+* @var string
+*/
+	Public $model_name = "Member";
+
+
+//	public function initialize(&$controller, $settings = array()) {
+//		//$this->settings = array_merge($this->defaults, $settings);
+//		$this->controller = &$controller;
+//	}
+
+	private function _create_stack($level=0) {
 		if (empty($level) || $level < 2) {
 			$level = $this->level;
 		} else {
@@ -56,7 +69,7 @@ class BtreeComponent extends Component {
 		for ($i=0; $i<$level; $i++) {
 			$total_placeholders += pow(2,$i);
 		}
-		echo $this->placeholder_counts = $total_placeholders;
+		$this->placeholder_counts = $total_placeholders;
 
 		// create default stack
 		$placeholders_stack  = $used_places = array();
@@ -84,7 +97,42 @@ class BtreeComponent extends Component {
 			}
 		}
 		$this->id_stack = $placeholders_stack;
+	}
 
+
+	// get model function to load model for database connection
+	public function &getModel($name = null) {
+		$model = null;
+		if (!$name) {
+			$name = $this->model_name;
+		}
+
+		$model = ClassRegistry::init($name);
+
+		if (empty($model)) {
+			trigger_error(__('Auth::getModel() - Model is not set or could not be found'), E_USER_WARNING);
+			return null;
+		}
+
+		return $model;
+	}
+
+	// core function which build tree based on number of level and member id
+	public function build_tree($member_id, $level) {
+		echo "MEMBER ID= = ".$member_id;
+		$this->_create_stack($level);
+		$this->Member = $this->getModel();
+		$member_downline = $member_downline = $this->Member->getDownlineData($member_id, $this->placeholder_counts);
+		return $this->_shuffle_array_stackwise($member_downline);
+	}
+
+	private function shuffle_array_stackwise($data) {
+		$stack = $this->id_stack;
+		$updated_downline = array();
+		for($i=0; $i < $this->placeholder_counts; $i++) {
+			$updated_downline[$i] = $data[$stack[$i]];
+		}
+		return $updated_downline;
 	}
 
 }

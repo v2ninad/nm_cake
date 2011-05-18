@@ -11,6 +11,10 @@ class RegistrationController extends AppController {
 	var $uses = array('User','Setup','Member','Package','Franchisee');
 	var $layout = 'registration';
 
+	function  beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index');
+	}
 
 	function index() {
 		// set paidflag -- if user can be registered as paid entry

@@ -4,7 +4,7 @@
 ?>
 <p align="center" class="pagetitle style3">~ Purchase Order cum Distributorship Application Form&nbsp;~<br>
           [ Form 1A ]</p>
-<form action="validateregistration.php" method="post" id="frm_registration" name="form1" >
+<form action="validateregistration.php" method="post" id="frm_registration" name="form" >
 	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="0" class="formtext">
 		<tr>
 			<th align="center" colspan="4">- Contact Information -</th>
@@ -19,7 +19,7 @@
 		<tr>
 			<td width="21%">Applicant's Name or<br>Enterprise Name</td>
 			<td colspan="3"  align="left">
-				<input name="data[Member][name]" type="text" id="nm" tabindex="2" value="<?php if(isset($member['name'])) echo $member['name']; ?>" size="80">
+				<input name="data[Member][name]" type="text" id="name" tabindex="2" value="<?php if(isset($member['name'])) echo $member['name']; ?>" size="80">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
@@ -106,7 +106,7 @@
 		<tr>
 			<td>Distributor ID</td>
 			<td align="left"><span class="style20">
-				<input name="data[Member][id]" type="text" tabindex="15" value="<?php if($autoid == 'y') {echo "AUTOMATIC"; } else{if(isset($member['id'])) echo $member['id'];}?>" size="30" <?php if($autoid == 'y') echo "readonly";?>>
+				<input name="data[Member][id]" type="text" id="id" tabindex="15" value="<?php if($autoid == 'y') {echo "AUTOMATIC"; } else{if(isset($member['id'])) echo $member['id'];}?>" size="30" <?php if($autoid == 'y') echo "readonly";?>>
 				<span class="style20 style1 style4">*</span>
 <?php
 				if($paidflag == true) {
@@ -258,7 +258,7 @@
 			<td colspan="4">
 				<div align="center">
 					<p>
-						<input name="Submit" type="submit" id="submit" tabindex="26" value="Register Now">
+						<input name="me" type="submit" id="submitme" tabindex="26" value="Register Now">
 					</p>
 				</div>
 			</td>
@@ -266,7 +266,7 @@
 	</table>
 </form>
 <script src="/js/jquery.validate.min.js"></script>
-<script>
+<script type="text/javascript">
 $(function(){
 	$(document).ready(function(){
 //		$("#doj").rules("add", { required: true, date:true, messages: { required: "Please enter valid date.", minlength: "INvalid date. Please enter valid date."}});
@@ -274,44 +274,37 @@ $(function(){
 //check for solution == http://forum.jquery.com/topic/jquery-validate-validating-on-input-id-instead-of-name
 		//http://docs.jquery.com/Plugins/Validation/validate#toptions
 		$('#frm_registration').validate({
-			rules: {
-				doj: {
-					required : true,
-					date : true
-				},
-				nominee: {
-					required : true,
-					minlength: 5
-				}
-			},
-			messages: {
-				doj: {
-					required : "Required input.",
-					date : "Please enter valid date"
-				},
-				nominee: {
-					required : "Please enter applicant's name",
-					minlength: jQuery.format("At least {0} characters required!")
-				}
-			},
 			submitHandler: function(form) {
 				// check valid date
-				$.ajax({type: "POST", async:false, url: "/ajax/is_valid_date", data: "dt="+escape($("#doj").val()),
+				$.ajax({type: "POST", async:true, url: "/ajax/is_valid_date", data: "dt="+escape($("#doj").val()),
 					success: function(msg) {
 						if (msg == "1") {
 							form.submit();
 						} else {
+							alert('in');
 							$("#site_message").html('Please enter valid date.');
+							return false;
 						}
 
 					}
 				});
+//.responseText	property of $.ajax
+
 
 
 			}
 
 		});
+		$("#doj").rules("add", { required: true, date:true, messages: { required: "Please enter valid date.", email: "Invalid date. Please enter valid date."}});
+		$("#name").rules("add", { required: true, minlength:10, messages: { required: "Please enter nominee.", minlength: "At least 10 characters required."}});
+		$("#address").rules("add", { required: true, messages: { required: "Please enter address."}});
+		$("#city").rules("add", { required: true, messages: { required: "Please enter city."}});
+		$("#pin").rules("add", { required: true, digits:true,rangelength: [6, 6], messages: { required: "Please enter pin.", digits:"Please enter digits only.", rangelength:"Please enter 6 digits for valid pin."}});
+		$("#state").rules("add", { required: true, messages: { required: "Please enter state."}});
+		$("#id").rules("add", { required: true, messages: { required: "Please enter member id."}});
+		$("#introducer").rules("add", { required: true, messages: { required: "Please enter introducer id."}});
 
+		
 //		$("#submit").click(function() {
 //			if($.trim($("#doj").val()) == "") {
 //				$("#site_message").html('Please enter valid date');

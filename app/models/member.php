@@ -144,4 +144,36 @@ class Member extends AppModel {
 		)
 	);
 
+
+	public function getDownlineData($member_id, $count) {
+		$counter = 0;
+		$str_downline = $member_id."~";
+		$downline = array();
+		while(($counter < $count) || ($str_downline != "")) {
+
+			$current_member = substr($str_downline, 0,strpos($str_downline,"~"));
+			$str_downline = str_replace($current_member."~", "", $str_downline);
+
+			if ($current_member != "NULL" ) {
+				$data = $this->read("*",$current_member);
+				$downline[] = $data;
+				if (!empty($data['Member']['leftid'])) {
+					$str_downline .= $data['Member']['leftid'] . "~";
+				} else {
+					$str_downline .= "NULL~";
+				}
+				if (!empty($data['Member']['righttid'])) {
+					$str_downline .= $data['Member']['righttid'] . "~";
+				} else {
+					$str_downline .= "NULL~";
+				}
+			} else {
+				$downline[] = "false";
+			}
+
+			$counter++;
+		}
+		return $downline;
+	}
+
 }
