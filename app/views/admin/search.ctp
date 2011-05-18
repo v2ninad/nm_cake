@@ -84,7 +84,7 @@
                     <tr>
                         <td width='6%' align=center><?=$i+1?><br><?=strtoupper($search["position"]) . " / " . strtoupper($search["spill"])?></td>
                         <td width='12%' align=center>
-							<a target="_blank" title="Click for Tree Structure" href=tree.php?id=<?=$search['id']?>><?=$search["id"]?>
+							<a target="_blank" title="Click for Tree Structure" href=<?=$this->Html->url("/admin/tree/".$search['id'])?>><?=$search["id"]?>
                             <br><?=$search["sponcerid"]?>
                             <br><?=$search["aboveid"]?></a>
 						</td>

@@ -8,6 +8,7 @@ class AdminController extends AppController {
 //			'fields' => array('username' => 'email', 'password' => 'password'),
 //		),
 //	);
+	var $components = array('RequestHandler','Cookie','Session','Btree','Auth');
 	var $uses = array('User','Setup','Member','Package');
 	var $layout = 'admin';
 	/*@var SessionComponent */ var $Session;
@@ -205,6 +206,15 @@ class AdminController extends AppController {
 		$packages = $this->Package->get_all_packages();
 		$this->set('data', $data[0]);
 		$this->set('packages',$packages);
+	}
+
+	function tree($id=null,$level=4) {
+		if (empty($id)) {
+			$id = 'company';
+		}
+		$data = $this->Btree->build_tree($id,$level);
+		$this->set('placeholders_count', $this->Btree->placeholder_count);
+		$this->set('data',$data);
 	}
 
 	function logout() {

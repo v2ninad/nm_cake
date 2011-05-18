@@ -42,7 +42,7 @@ class BtreeComponent extends Component {
 *
 * @var number
 */
-	public $placeholder_counts;
+	public $placeholder_count;
 
 /**
 * Model name to refer for connection
@@ -69,21 +69,23 @@ class BtreeComponent extends Component {
 		for ($i=0; $i<$level; $i++) {
 			$total_placeholders += pow(2,$i);
 		}
-		$this->placeholder_counts = $total_placeholders;
+		$this->placeholder_count = $total_placeholders;
 
 		// create default stack
 		$placeholders_stack  = $used_places = array();
 		// minimum counter
-		$min_counter = 1;
-
+		$min_counter = 0;
+		$level_stack = array();
 		// start shuffling stack array according to position
 		// loop for number of levels
 		for ($i=1; $i<=$level; $i++) {
 			$current_level_diff = pow(2,$i);
 			$dup_min_counter = $min_counter;
+
 			// loop to increase counter in each level
 			for ($j=$dup_min_counter; $j<=$total_placeholders; $j=$j+$current_level_diff) {
-				$placeholders_stack[] = $j;
+				//$placeholders_stack[] = $j;
+				$level_stack[$i-1][] = $j;
 				$used_places[$j] = $j;
 				if ($j==$min_counter) {
 					// check available non used min counter
@@ -95,6 +97,17 @@ class BtreeComponent extends Component {
 					}
 				}
 			}
+		}
+		//echo "LEVEL STACK === ";pr($level_stack);
+
+		// take all level stacks in single array in reverse order .. coz ...
+		// 13579 will be in level1 .. but in reality that would be bottom layer .. i.e. level4 by default
+		for ($i=(count($level_stack)-1); $i>=0; $i--) {
+			//for every element ineach level
+			for($j=0; $j<count($level_stack[$i]);$j++) {
+				$placeholders_stack[] = $level_stack[$i][$j];
+			}
+
 		}
 		$this->id_stack = $placeholders_stack;
 	}
@@ -119,17 +132,23 @@ class BtreeComponent extends Component {
 
 	// core function which build tree based on number of level and member id
 	public function build_tree($member_id, $level) {
-		echo "MEMBER ID= = ".$member_id;
 		$this->_create_stack($level);
 		$this->Member = $this->getModel();
-		$member_downline = $member_downline = $this->Member->getDownlineData($member_id, $this->placeholder_counts);
+		$member_downline = $member_downline = $this->Member->getDownlineData($member_id, $this->placeholder_count);
+		$ids1 = $ids2 = array();
+		$counter = 0;
+		foreach($member_downline as $key => $members) {
+			$ids1[] = $members['Member']['id'];
+		}
+		echo "In btree component";pr($ids1);
+
 		return $this->_shuffle_array_stackwise($member_downline);
 	}
 
-	private function shuffle_array_stackwise($data) {
+	private function _shuffle_array_stackwise($data) {
 		$stack = $this->id_stack;
 		$updated_downline = array();
-		for($i=0; $i < $this->placeholder_counts; $i++) {
+		for($i=0; $i < $this->placeholder_count; $i++) {
 			$updated_downline[$i] = $data[$stack[$i]];
 		}
 		return $updated_downline;

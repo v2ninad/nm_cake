@@ -168,7 +168,7 @@ class Member extends AppModel {
 					$str_downline .= "NULL~";
 				}
 			} else {
-				$downline[] = "false";
+				$downline[] = array('Member' => array('id'=>false));
 			}
 
 			$counter++;

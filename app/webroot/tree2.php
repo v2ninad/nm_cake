@@ -8,8 +8,8 @@
 	</head>
 	<body>
 
-<div id="treeDiv" style="overflow: hidden; height: 10px; border-style: solid; border-width: 3px; border-color: #000000;">
-	<div style="border-style: inset;" id="box1">
+		<div id="treeDiv" style="overflow: hidden; height: 10px; border-width: 3px; border-color: #000000;">
+	<div style="border-style: inset;">
 		<span>Box1</span>
 	</div>
 	<div style="border-style: inset;">
