@@ -149,11 +149,11 @@ class Member extends AppModel {
 		$counter = 0;
 		$str_downline = $member_id."~";
 		$downline = array();
-		while(($counter < $count) || ($str_downline != "")) {
-
+		$sponcercounter = 0;
+		while(($counter < $count) && ($str_downline != "")) {
+			++$counter;
 			$current_member = substr($str_downline, 0,strpos($str_downline,"~"));
-			$str_downline = str_replace($current_member."~", "", $str_downline);
-
+			$str_downline = substr_replace($str_downline, "",0,strlen($current_member)+1);
 			if ($current_member != "NULL" ) {
 				$data = $this->read("*",$current_member);
 				$downline[] = $data;
@@ -162,16 +162,49 @@ class Member extends AppModel {
 				} else {
 					$str_downline .= "NULL~";
 				}
-				if (!empty($data['Member']['righttid'])) {
-					$str_downline .= $data['Member']['righttid'] . "~";
+				if (!empty($data['Member']['rightid'])) {
+					$str_downline .= $data['Member']['rightid'] . "~";
 				} else {
 					$str_downline .= "NULL~";
 				}
+
+				if ($data['Member']['sponcerid'] == $member_id) {
+					$sponcercounter++;
+					if ($sponcercounter <= 2) {
+						// directs
+						if ($data['Member']['paid'] == 'y') {
+							$data['Member']['status'] = 'dp';
+						} else {
+							$data['Member']['status'] = 'du';
+						}
+
+					} else {
+						//spills
+						if ($data['Member']['paid'] == 'y') {
+							$data['Member']['status'] = 'sp';
+						} else {
+							$data['Member']['status'] = 'su';
+						}
+						
+					}
+				} else {
+					if ($data['Member']['id'] != $member_id) {
+						if ($data['Member']['paid'] == 'y') {
+							$data['Member']['status'] = 'ip';
+						} else {
+							$data['Member']['status'] = 'iu';
+						}
+					} else {
+						$data['Member']['status'] = 'up';
+					}
+
+				}
+
 			} else {
-				$downline[] = array('Member' => array('id'=>false));
+				$downline[] = array('Member' => array('id'=>false,'status'=>'bp'));
+				$str_downline .= "NULL~NULL~";
 			}
 
-			$counter++;
 		}
 		return $downline;
 	}

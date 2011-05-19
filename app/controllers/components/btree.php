@@ -140,8 +140,6 @@ class BtreeComponent extends Component {
 		foreach($member_downline as $key => $members) {
 			$ids1[] = $members['Member']['id'];
 		}
-		echo "In btree component";pr($ids1);
-
 		return $this->_shuffle_array_stackwise($member_downline);
 	}
 
@@ -149,7 +147,7 @@ class BtreeComponent extends Component {
 		$stack = $this->id_stack;
 		$updated_downline = array();
 		for($i=0; $i < $this->placeholder_count; $i++) {
-			$updated_downline[$i] = $data[$stack[$i]];
+			$updated_downline[$stack[$i]] = $data[$i];
 		}
 		return $updated_downline;
 	}
