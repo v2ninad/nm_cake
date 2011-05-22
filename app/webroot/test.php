@@ -1,87 +1,52 @@
-<?php
-/**
- * Web Access Frontend for TestSuite
- *
- * PHP 5
- *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice
- *
- * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing
- * @package       app.webroot
- * @since         CakePHP(tm) v 1.2.0.4433
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-set_time_limit(0);
-ini_set('display_errors', 1);
-/**
- * Use the DS to separate the directories in other defines
- */
-	if (!defined('DS')) {
-		define('DS', DIRECTORY_SEPARATOR);
-	}
-/**
- * These defines should only be edited if you have cake installed in
- * a directory layout other than the way it is distributed.
- * When using custom settings be sure to use the DS and do not add a trailing DS.
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Slider - Range slider</title>
+	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
+	<script src="/js/jquery-1.5.1.js"></script>
+	<script src="/js/jquery.ui.core.js"></script>
+	<script src="/js/jquery.ui.widget.js"></script>
+	<script src="/js/jquery.ui.mouse.js"></script>
+	<script src="/js/jquery.ui.slider.js"></script>
+	<link rel="stylesheet" href="../demos.css">
+	<style>
+	#demo-frame > div.demo { padding: 10px !important; };
+	</style>
+	<script>
+	$(function() {
+		$( "#slider-range" ).slider({
+			range: true,
+			min: 0,
+			max: 500,
+			values: [ 75, 300 ],
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			}
+		});
+		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+			" - $" + $( "#slider-range" ).slider( "values", 1 ) );
+	});
+	</script>
+</head>
+<body>
 
-/**
- * The full path to the directory which holds "app", WITHOUT a trailing DS.
- *
- */
-	if (!defined('ROOT')) {
-		define('ROOT', dirname(dirname(dirname(__FILE__))));
-	}
-/**
- * The actual directory name for the "app".
- *
- */
-	if (!defined('APP_DIR')) {
-		define('APP_DIR', basename(dirname(dirname(__FILE__))));
-	}
-/**
- * The absolute path to the "cake" directory, WITHOUT a trailing DS.
- *
- */
-	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		define('CAKE_CORE_INCLUDE_PATH', ROOT);
-	}
+<div class="demo">
 
-/**
- * Editing below this line should not be necessary.
- * Change at your own risk.
- *
- */
-if (!defined('WEBROOT_DIR')) {
-	define('WEBROOT_DIR', basename(dirname(__FILE__)));
-}
-if (!defined('WWW_ROOT')) {
-	define('WWW_ROOT', dirname(__FILE__) . DS);
-}
-if (!defined('CORE_PATH')) {
-	define('APP_PATH', ROOT . DS . APP_DIR . DS);
-	define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
-}
-if (!include(CORE_PATH . 'cake' . DS . 'bootstrap.php')) {
-	trigger_error("CakePHP core could not be found.  Check the value of CAKE_CORE_INCLUDE_PATH in APP/webroot/index.php.  It should point to the directory containing your " . DS . "cake core directory and your " . DS . "vendors root directory.", E_USER_ERROR);
-}
+<p>
+	<label for="amount">Price range:</label>
+	<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+</p>
 
-$corePath = App::core('cake');
-if (isset($corePath[0])) {
-	define('TEST_CAKE_CORE_INCLUDE_PATH', rtrim($corePath[0], DS) . DS);
-} else {
-	define('TEST_CAKE_CORE_INCLUDE_PATH', CAKE_CORE_INCLUDE_PATH);
-}
+<div id="slider-range"></div>
 
-if (Configure::read('debug') < 1) {
-	die(__('Debug setting does not allow access to this url.', true));
-}
+</div><!-- End demo -->
 
-require_once CAKE_TESTS_LIB . 'cake_test_suite_dispatcher.php';
 
-CakeTestSuiteDispatcher::run();
+
+<div class="demo-description">
+<p>Set the <code>range</code> option to true to capture a range of values with two drag handles.  The space between the handles is filled with a different background color to indicate those values are selected.</p>
+</div><!-- End demo-description -->
+
+</body>
+</html>

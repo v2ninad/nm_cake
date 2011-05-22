@@ -43,6 +43,6 @@
 <?php echo $this->element('sql_dump') ?>
 <?php //echo $this->element('analytics'); ?>
 <?php //echo $this->element('yield_tracking'); ?>
-<?php echo "<input type='text' name='sid' value='".session_id()."'>"; ?>
+<?php //echo "<input type='text' name='sid' value='".session_id()."'>"; ?>
 </body>
 </html>

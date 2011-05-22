@@ -57,6 +57,14 @@ class BtreeComponent extends Component {
 //		$this->controller = &$controller;
 //	}
 
+
+/**
+* id stack index of very first member
+*
+* @var string
+*/
+	public $root_id_index;
+
 	private function _create_stack($level=0) {
 		if (empty($level) || $level < 2) {
 			$level = $this->level;
@@ -109,6 +117,7 @@ class BtreeComponent extends Component {
 			}
 
 		}
+		$this->root_id_index = $placeholders_stack[0];
 		$this->id_stack = $placeholders_stack;
 	}
 

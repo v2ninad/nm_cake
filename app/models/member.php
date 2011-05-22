@@ -156,7 +156,6 @@ class Member extends AppModel {
 			$str_downline = substr_replace($str_downline, "",0,strlen($current_member)+1);
 			if ($current_member != "NULL" ) {
 				$data = $this->read("*",$current_member);
-				$downline[] = $data;
 				if (!empty($data['Member']['leftid'])) {
 					$str_downline .= $data['Member']['leftid'] . "~";
 				} else {
@@ -168,7 +167,7 @@ class Member extends AppModel {
 					$str_downline .= "NULL~";
 				}
 
-				if ($data['Member']['sponcerid'] == $member_id) {
+				if (strtolower($data['Member']['sponcerid']) == strtolower($member_id)) {
 					$sponcercounter++;
 					if ($sponcercounter <= 2) {
 						// directs
@@ -188,7 +187,7 @@ class Member extends AppModel {
 						
 					}
 				} else {
-					if ($data['Member']['id'] != $member_id) {
+					if (strtolower($data['Member']['id']) != strtolower($member_id)) {
 						if ($data['Member']['paid'] == 'y') {
 							$data['Member']['status'] = 'ip';
 						} else {
@@ -199,6 +198,7 @@ class Member extends AppModel {
 					}
 
 				}
+				$downline[] = $data;
 
 			} else {
 				$downline[] = array('Member' => array('id'=>false,'status'=>'bp'));
@@ -208,5 +208,61 @@ class Member extends AppModel {
 		}
 		return $downline;
 	}
+
+	function getaboveid($introducer, &$aboveid, &$loc, &$spillname) //>Done
+	{
+		$data = $this->read("*",$introducer);
+		$aboveid = $data['Member']['id'];
+		$spillname = $data['Member']['name'];
+		$tempdownline = "";
+
+		if ($loc == "r") {
+			if ($data['Member']["rightid"] == "") {
+				$aboveid = $introducer;
+				$loc = "r";
+				return;
+			} elseif($data['Member']["leftid"] == "") {
+				$aboveid = $introducer;
+				$loc = "l";
+				return;
+			}
+		} else {
+			if ($data['Member']["leftid"] == "") {
+				$aboveid = $introducer;
+				$loc = "l";
+				return;
+			} elseif ($data['Member']["rightid"] == "") {
+				$aboveid = $introducer;
+				$loc = "r";
+				return;
+			}
+		}
+
+		//spills can go anywhere on extreme left and right
+		$tempdownline = $introducer . "~"; // Starts from introducer
+		while($tempdownline <> "") {
+			//Taking each node for extreme left & extreme right
+			$node = substr($tempdownline,0,strpos($tempdownline,"~"));
+			$tempdownline = substr($tempdownline,strpos($tempdownline,"~") + 1);
+
+			if($loc == "l") {
+				$data = $this->find('first',array('fields'=>array('id','leftid as sideid','name'),'conditions'=>array('id'=>$node)));
+			} else {
+				$data = $this->find('first',array('fields'=>array('id','rightid as sideid','name'),'conditions'=>array('id'=>$node)));
+			}
+
+			if(empty($data['Member']['sideid'])) {
+				$aboveid = $data['Member']['id'];
+				$spillname = $data['Member']['name'];
+				return;
+			}
+			else {
+				$tempdownline = $tempdownline . $data['Member']['sideid'] . "~" ;
+			}
+		} // while
+	}
+
+
+
 
 }

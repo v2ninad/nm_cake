@@ -4,7 +4,7 @@
 ?>
 <p align="center" class="pagetitle style3">~ Purchase Order cum Distributorship Application Form&nbsp;~<br>
           [ Form 1A ]</p>
-<form action="validateregistration.php" method="post" id="frm_registration" name="form" >
+<form method="post" id="frm_registration" name="form" >
 	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="0" class="formtext">
 		<tr>
 			<th align="center" colspan="4">- Contact Information -</th>
@@ -67,7 +67,7 @@
 		<tr>
 			<td>State</td>
 			<td colspan="3" align="left">
-				<input name="data[Member][state]" type="text" id="state" tabindex="9" value="<?php if(isset($member['state'])) echo $member['country']; ?>" size="30">
+				<input name="data[Member][state]" type="text" id="state" tabindex="9" value="<?php if(isset($member['state'])) echo $member['state']; ?>" size="30">
 				<span class="style20 style1 style4">*</span>
 			</td>
 		</tr>
@@ -258,7 +258,7 @@
 			<td colspan="4">
 				<div align="center">
 					<p>
-						<input name="me" type="submit" id="submitme" tabindex="26" value="Register Now">
+						<input name="data[me]" type="submit" id="submitme" tabindex="26" value="Register Now">
 					</p>
 				</div>
 			</td>
@@ -278,6 +278,7 @@ $(function(){
 				// check valid date
 				$.ajax({type: "POST", async:true, url: "/ajax/is_valid_date", data: "dt="+escape($("#doj").val()),
 					success: function(msg) {
+						alert(msg);
 						if (msg == "1") {
 							form.submit();
 						} else {
@@ -295,14 +296,15 @@ $(function(){
 			}
 
 		});
-		$("#doj").rules("add", { required: true, date:true, messages: { required: "Please enter valid date.", email: "Invalid date. Please enter valid date."}});
-		$("#name").rules("add", { required: true, minlength:10, messages: { required: "Please enter nominee.", minlength: "At least 10 characters required."}});
+		$("#doj").rules("add", { required: true, messages: { required: "Please enter valid date."}});
+		$("#name").rules("add", { required: true, minlength:10, messages: { required: "Please enter Applicant's name.", minlength: "At least 10 characters required."}});
 		$("#address").rules("add", { required: true, messages: { required: "Please enter address."}});
 		$("#city").rules("add", { required: true, messages: { required: "Please enter city."}});
 		$("#pin").rules("add", { required: true, digits:true,rangelength: [6, 6], messages: { required: "Please enter pin.", digits:"Please enter digits only.", rangelength:"Please enter 6 digits for valid pin."}});
 		$("#state").rules("add", { required: true, messages: { required: "Please enter state."}});
 		$("#id").rules("add", { required: true, messages: { required: "Please enter member id."}});
 		$("#introducer").rules("add", { required: true, messages: { required: "Please enter introducer id."}});
+		$("#paydetails").rules("add", { required: true, messages: { required: "Please enter Paydetails."}});
 
 		
 //		$("#submit").click(function() {

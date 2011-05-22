@@ -40,10 +40,10 @@
                             <Td align=left height="18">&#187; <a href="<?=$this->Html->url('/admin/search')?>">Search</a></td>
                           </tr>
                           <tr>
-                            <Td align=left height="18">&#187; <a href="<?=$this->Html->url('../registration/registration.php')?>" target="_blank">Registration</a></td>
+                            <Td align=left height="18">&#187; <a href="<?=$this->Html->url('/registration')?>" target="_blank">Registration</a></td>
                           </tr>
                           <tr>
-                            <Td align=left height="18">&#187;<a href="<?=$this->Html->url('tree.php')?>"> Tree View </a></td>
+							  <Td align=left height="18">&#187;<a target="blank" href="<?=$this->Html->url('/admin/tree')?>"> Tree View </a></td>
                           </tr>
                       </table></td>
                     </tr>

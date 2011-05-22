@@ -215,6 +215,10 @@ class AdminController extends AppController {
 		$data = $this->Btree->build_tree($id,$level);
 		$this->set('placeholders_count', $this->Btree->placeholder_count);
 		$this->set('data',$data);
+		$this->set('current_id',$id);
+		$this->set('root_id_index',$this->Btree->root_id_index);
+		$this->layout = 'wo_header';
+
 	}
 
 	function logout() {
@@ -222,5 +226,6 @@ class AdminController extends AppController {
 		$this->Session->setFlash('You are logged out successfully!');
 		$this->redirect('login');
 	}
+
 
 }
